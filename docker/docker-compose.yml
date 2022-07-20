@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: accbd2postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=grupo7
+      - POSTGRES_PASSWORD=grupo2022
+      - POSTGRES_DB=accbd2
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    
