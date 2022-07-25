@@ -1,0 +1,11 @@
+FROM postgres:latest
+
+COPY US_Accidents_Dec19.csv /tmp/US_Accidents_Dec19.csv
+COPY import-to-postgres.sh /docker-entrypoint-initdb.d
+
+ENV DATABASE_HOST=127.0.0.1
+ENV POSTGRES_USER=grupo7
+ENV POSTGRES_PASSWORD=grupo2022
+ENV POSTGRES_DB=accbd2
+
+EXPOSE 5432
