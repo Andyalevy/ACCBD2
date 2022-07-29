@@ -2,7 +2,7 @@
 
 set -e
 
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTRGRES_DB" <<-EOSQL
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "accbd2" <<-EOSQL
 CREATE TABLE accidents (
 	id VARCHAR(10) NOT NULL,
 	source VARCHAR ( 256 ), 
