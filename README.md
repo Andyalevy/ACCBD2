@@ -6,4 +6,4 @@ docker-compose up
 ```
 First time will import the dataset. 
 
-May take long, depending on your hardware. Be patient.
+This may take a long time depending on your hardware. Be patient.
