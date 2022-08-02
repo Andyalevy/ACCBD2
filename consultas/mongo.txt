@@ -8,3 +8,6 @@
  
 4)
  - db.accidents.aggregate([{$group: {_id:null, avg_val:{$avg:"$Distance(mi)"}}}]);
+ 
+6)
+db.accidents.find().forEach(function(doc){print("{\"_id\" : ObjectId(\"" + doc._id + "\"), \"average\" : " + db.accidents.aggregate([{$geoNear: {near: {type: "Point", coordinates: [doc.Start_Lng, doc.Start_Lat]}, distanceField: "distance", spherical: true}},{$limit:10}, {$group: {_id:null, avg_val:{$avg:"$distance"}}}]).toArray()[0]['avg_val'] + "}");});
