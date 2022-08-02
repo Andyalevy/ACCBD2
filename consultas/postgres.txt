@@ -4,3 +4,6 @@
 
 4)
  - select avg(distance_mi) as average from accidents;
+
+7)
+ - select street, count(street) as "total" from accidents group by street order by total desc limit 5;
