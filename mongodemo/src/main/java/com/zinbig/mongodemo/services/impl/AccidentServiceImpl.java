@@ -41,7 +41,7 @@ public class AccidentServiceImpl implements AccidentService {
 	private DTOFactory dtoFactory;
 
     @Override
-    public List<AccidentDTO> accidentsBetweenDates(Date beginDate, Date endDate) {
+    public List<Accident> accidentsBetweenDates(Date beginDate, Date endDate) {
         // TODO Auto-generated method stub
         return null;
     }

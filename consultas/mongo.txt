@@ -1,5 +1,5 @@
 1)  
- - db.accidents.find({location:{$near:{$geometry:{type:"Point",coordinates:[-84.058723,39.865147]},$maxDistance: 1000,$minDistance:1}}})
+ - db.accidents.find({Start_Time:{$gte:"2016-02-01", $lt:"2019-02-01"}})
 
 3) 
  - db.accidents.updateMany({}, [{$set: {location: { "type": "Point", "coordinates": ["$Start_Lng", "$Start_Lat"]}}}]);

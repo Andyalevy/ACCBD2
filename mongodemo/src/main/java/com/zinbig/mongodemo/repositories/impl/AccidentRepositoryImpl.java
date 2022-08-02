@@ -6,6 +6,8 @@ package com.zinbig.mongodemo.repositories.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.zinbig.mongodemo.model.Accident;
 import com.zinbig.mongodemo.repositories.AccidentRepository;
 
@@ -16,10 +18,11 @@ import com.zinbig.mongodemo.repositories.AccidentRepository;
  * @author Javier Bazzocco
  *
  */
-public class AccidentRepositoryImpl implements AccidentRepository {
+@Repository
+public class AccidentRepositoryImpl {
 
 	// private MongoTemplate mongoTemplate;
-
+/* 
 	@Override
 	public List<Accident> accidentsBetweenDates(Date beginDate, Date endDate) {
 		// TODO Auto-generated method stub
@@ -55,5 +58,5 @@ public class AccidentRepositoryImpl implements AccidentRepository {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+*/
 }
