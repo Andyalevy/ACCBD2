@@ -3,6 +3,7 @@
  */
 package com.zinbig.mongodemo.resources;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,21 +38,17 @@ public class DemoController {
 	@GetMapping("/api/accidents/")
     public ResponseEntity<List<Accident>> listAccidents(@RequestParam(required = false) String start,
             @RequestParam(required = false) String end,
-            @RequestParam(required = false, defaultValue = "postgres") String name) throws ParseException {
+            @RequestParam(required = false, defaultValue = "mongo") String name) throws ParseException {
         
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
         List<Accident> accidents;
         if (name.equals("mongo")) {
             formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-            Date startD = formatter.parse(start + "T00:00:00");
-            Date endD = formatter.parse(end + "T00:00:00");
-            accidents = accidentService.accidentsBetweenDates(startD, endD);
-        } else {
-            Date startD = formatter.parse(start + "T00:00:00");
-            Date endD = formatter.parse(end + "T00:00:00");
-            accidents = accidentService.accidentsBetweenDates(startD, endD);
         }
+        Date startD = formatter.parse(start + "T00:00:00");
+        Date endD = formatter.parse(end + "T00:00:00");
+        accidents = accidentService.accidentsBetweenDates(startD, endD);
         // print total accidents
         System.out.println("Total accidents: " + accidents.size());
 
@@ -65,5 +62,17 @@ public class DemoController {
         Float averageDistance = accidentService.averageDistanceOfAccidentsFromBeginingToEnd(); 
         System.out.println("Distancia promedio: " + averageDistance);
         return ResponseEntity.ok(averageDistance);
+    }
+
+    @GetMapping("/api/accidents/accidentsNear/")
+    public ResponseEntity<List<Accident>> accidentsNear(
+            @RequestParam(required = false, defaultValue = "[-84.032608, 39.063148]") String point,
+            @RequestParam(required = false, defaultValue = "10000") int radius) throws ParseException {
+        
+        Double[] pointDouble = {-84.032608, 39.063148};
+
+        List<Accident> accidentsNear = accidentService.accidentsNearAPointInARadius(pointDouble,radius); 
+        System.out.println("Accidentes cerca del punto "+ point + ": " + accidentsNear);
+        return ResponseEntity.ok(accidentsNear);
     }
 }

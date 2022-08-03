@@ -3,21 +3,31 @@ package com.zinbig.mongodemo.model;
 
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="accidents")
 public class Accident {
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+
     private String source;
     private Float tmc;
     private Integer severety;
-    private Date start_time;
-    private Date end_time;
-    private Float start_lat;
-    private Float start_lng;
-    private Float end_lat;
-    private Float end_lng;
-    private Float distance_mi;
+    private Date startTime;
+    private Date endTime;
+    private Float startLat;
+    private Float startLng;
+    private Float endLat;
+    private Float endLng;
+    private Float distanceMi;
     private String description;
     private Float number;
     private String street;
@@ -28,51 +38,53 @@ public class Accident {
     private String zipcode;
     private String country;
     private String timezone;
-    private String airport_code;
-    private String weather_timestamp;
-    private Float temperature_f;
-    private String wind_chill_f;
+    private String airportCode;
+    private String weatherTimestamp;
+    @Column(name="temperature_f")
+    private Float temperatureF;
+    @Column(name="wind_chill_f")
+    private String windChillF;
     private String humidity;
-    private String pressure_in;
-    private Float visibility_mi;
-    private String wind_direction;
-    private Float wind_speed_mph;
-    private Float precipitation_in;
-    private Float weather_condition;
+    private String pressureIn;
+    private Float visibilityMi;
+    private String windDirection;
+    private Float windSpeedMph;
+    private Float precipitationIn;
+    private String weatherCondition;
     private Boolean amenity;
     private Boolean bump;
     private Boolean crossing;
-    private Boolean give_way;
+    private Boolean giveWay;
     private Boolean junction;
-    private Boolean no_exit;
+    private Boolean noExit;
     private Boolean railway;
     private Boolean roundabout;
     private Boolean station;
     private Boolean stop;
-    private Boolean traffic_calming;
-    private Boolean traffic_signal;
-    private Boolean turning_loop;
-    private String sunrise_sunset;
-    private String civil_twilight;
-    private String nautical_twilight;
-    private String astronomical_twilight;
+    private Boolean trafficCalming;
+    private Boolean trafficSignal;
+    private Boolean turningLoop;
+    private String sunriseSunset;
+    private String civilTwilight;
+    private String nauticalTwilight;
+    private String astronomicalTwilight;
 
 
     public Accident() {
     }
 
-    public Accident(String id, String source, Float tmc, Integer severety, Date start_time, Date end_time, Float start_lat, Float start_lng, Float end_lat, Float end_lng, Float distance_mi, String description, Float number, String street, char side, String city, String county, String state, String zipcode, String country, String timezone, String airport_code, String weather_timestamp, Float temperature_f, String wind_chill_f, String humidity, String pressure_in, Float visibility_mi, String wind_direction, Float wind_speed_mph, Float precipitation_in, Float weather_condition, Boolean amenity, Boolean bump, Boolean crossing, Boolean give_way, Boolean junction, Boolean no_exit, Boolean railway, Boolean roundabout, Boolean station, Boolean stop, Boolean traffic_calming, Boolean traffic_signal, Boolean turning_loop, String sunrise_sunset, String civil_twilight, String nautical_twilight, String astronomical_twilight) {
+    public Accident(String id, String source, Float tmc, Integer severety, Date startTime, Date endTime, Float startLat, Float startLng, Float endLat, Float endLng, Float distanceMi, String description, Float number, String street, char side, String city, String county, String state, String zipcode, String country, String timezone, String airportCode, String weatherTimestamp, Float temperatureF, String windChillF, String humidity, String pressureIn, Float visibilityMi, String windDirection, Float windSpeedMph, Float precipitationIn, String weatherCondition, Boolean amenity, Boolean bump, Boolean crossing, Boolean giveWay, Boolean junction, Boolean noExit, Boolean railway, Boolean roundabout, Boolean station, Boolean stop, Boolean trafficCalming, Boolean trafficSignal, Boolean turningLoop, String sunriseSunset, String civilTwilight, String nauticalTwilight, String astronomicalTwilight) {
         this.id = id;
         this.source = source;
         this.tmc = tmc;
         this.severety = severety;
-        this.start_time = start_time;
-        this.end_time = end_time;
-        this.start_lat = start_lat;
-        this.start_lng = start_lng;
-        this.end_lat = end_lat;
-        this.end_lng = end_lng;
-        this.distance_mi = distance_mi;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.startLat = startLat;
+        this.startLng = startLng;
+        this.endLat = endLat;
+        this.endLng = endLng;
+        this.distanceMi = distanceMi;
         this.description = description;
         this.number = number;
         this.street = street;
@@ -83,34 +95,34 @@ public class Accident {
         this.zipcode = zipcode;
         this.country = country;
         this.timezone = timezone;
-        this.airport_code = airport_code;
-        this.weather_timestamp = weather_timestamp;
-        this.temperature_f = temperature_f;
-        this.wind_chill_f = wind_chill_f;
+        this.airportCode = airportCode;
+        this.weatherTimestamp = weatherTimestamp;
+        this.temperatureF = temperatureF;
+        this.windChillF = windChillF;
         this.humidity = humidity;
-        this.pressure_in = pressure_in;
-        this.visibility_mi = visibility_mi;
-        this.wind_direction = wind_direction;
-        this.wind_speed_mph = wind_speed_mph;
-        this.precipitation_in = precipitation_in;
-        this.weather_condition = weather_condition;
+        this.pressureIn = pressureIn;
+        this.visibilityMi = visibilityMi;
+        this.windDirection = windDirection;
+        this.windSpeedMph = windSpeedMph;
+        this.precipitationIn = precipitationIn;
+        this.weatherCondition = weatherCondition;
         this.amenity = amenity;
         this.bump = bump;
         this.crossing = crossing;
-        this.give_way = give_way;
+        this.giveWay = giveWay;
         this.junction = junction;
-        this.no_exit = no_exit;
+        this.noExit = noExit;
         this.railway = railway;
         this.roundabout = roundabout;
         this.station = station;
         this.stop = stop;
-        this.traffic_calming = traffic_calming;
-        this.traffic_signal = traffic_signal;
-        this.turning_loop = turning_loop;
-        this.sunrise_sunset = sunrise_sunset;
-        this.civil_twilight = civil_twilight;
-        this.nautical_twilight = nautical_twilight;
-        this.astronomical_twilight = astronomical_twilight;
+        this.trafficCalming = trafficCalming;
+        this.trafficSignal = trafficSignal;
+        this.turningLoop = turningLoop;
+        this.sunriseSunset = sunriseSunset;
+        this.civilTwilight = civilTwilight;
+        this.nauticalTwilight = nauticalTwilight;
+        this.astronomicalTwilight = astronomicalTwilight;
     }
 
 
@@ -146,60 +158,60 @@ public class Accident {
         this.severety = severety;
     }
 
-    public Date getStart_time() {
-        return this.start_time;
+    public Date getStartTime() {
+        return this.startTime;
     }
 
-    public void setStart_time(Date start_time) {
-        this.start_time = start_time;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
-    public Date getEnd_time() {
-        return this.end_time;
+    public Date getEndTime() {
+        return this.endTime;
     }
 
-    public void setEnd_time(Date end_time) {
-        this.end_time = end_time;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
-    public Float getStart_lat() {
-        return this.start_lat;
+    public Float getStartLat() {
+        return this.startLat;
     }
 
-    public void setStart_lat(Float start_lat) {
-        this.start_lat = start_lat;
+    public void setStartLat(Float startLat) {
+        this.startLat = startLat;
     }
 
-    public Float getStart_lng() {
-        return this.start_lng;
+    public Float getStartLng() {
+        return this.startLng;
     }
 
-    public void setStart_lng(Float start_lng) {
-        this.start_lng = start_lng;
+    public void setStartLng(Float startLng) {
+        this.startLng = startLng;
     }
 
-    public Float getEnd_lat() {
-        return this.end_lat;
+    public Float getEndLat() {
+        return this.endLat;
     }
 
-    public void setEnd_lat(Float end_lat) {
-        this.end_lat = end_lat;
+    public void setEndLat(Float endLat) {
+        this.endLat = endLat;
     }
 
-    public Float getEnd_lng() {
-        return this.end_lng;
+    public Float getEndLng() {
+        return this.endLng;
     }
 
-    public void setEnd_lng(Float end_lng) {
-        this.end_lng = end_lng;
+    public void setEndLng(Float endLng) {
+        this.endLng = endLng;
     }
 
-    public Float getDistance_mi() {
-        return this.distance_mi;
+    public Float getDistanceMi() {
+        return this.distanceMi;
     }
 
-    public void setDistance_mi(Float distance_mi) {
-        this.distance_mi = distance_mi;
+    public void setDistanceMi(Float distanceMi) {
+        this.distanceMi = distanceMi;
     }
 
     public String getDescription() {
@@ -282,36 +294,36 @@ public class Accident {
         this.timezone = timezone;
     }
 
-    public String getAirport_code() {
-        return this.airport_code;
+    public String getAirportCode() {
+        return this.airportCode;
     }
 
-    public void setAirport_code(String airport_code) {
-        this.airport_code = airport_code;
+    public void setAirportCode(String airportCode) {
+        this.airportCode = airportCode;
     }
 
-    public String getWeather_timestamp() {
-        return this.weather_timestamp;
+    public String getWeatherTimestamp() {
+        return this.weatherTimestamp;
     }
 
-    public void setWeather_timestamp(String weather_timestamp) {
-        this.weather_timestamp = weather_timestamp;
+    public void setWeatherTimestamp(String weatherTimestamp) {
+        this.weatherTimestamp = weatherTimestamp;
     }
 
-    public Float getTemperature_f() {
-        return this.temperature_f;
+    public Float getTemperatureF() {
+        return this.temperatureF;
     }
 
-    public void setTemperature_f(Float temperature_f) {
-        this.temperature_f = temperature_f;
+    public void setTemperatureF(Float temperatureF) {
+        this.temperatureF = temperatureF;
     }
 
-    public String getWind_chill_f() {
-        return this.wind_chill_f;
+    public String getWindChillF() {
+        return this.windChillF;
     }
 
-    public void setWind_chill_f(String wind_chill_f) {
-        this.wind_chill_f = wind_chill_f;
+    public void setWindChillF(String windChillF) {
+        this.windChillF = windChillF;
     }
 
     public String getHumidity() {
@@ -322,52 +334,52 @@ public class Accident {
         this.humidity = humidity;
     }
 
-    public String getPressure_in() {
-        return this.pressure_in;
+    public String getPressureIn() {
+        return this.pressureIn;
     }
 
-    public void setPressure_in(String pressure_in) {
-        this.pressure_in = pressure_in;
+    public void setPressureIn(String pressureIn) {
+        this.pressureIn = pressureIn;
     }
 
-    public Float getVisibility_mi() {
-        return this.visibility_mi;
+    public Float getVisibilityMi() {
+        return this.visibilityMi;
     }
 
-    public void setVisibility_mi(Float visibility_mi) {
-        this.visibility_mi = visibility_mi;
+    public void setVisibilityMi(Float visibilityMi) {
+        this.visibilityMi = visibilityMi;
     }
 
-    public String getWind_direction() {
-        return this.wind_direction;
+    public String getWindDirection() {
+        return this.windDirection;
     }
 
-    public void setWind_direction(String wind_direction) {
-        this.wind_direction = wind_direction;
+    public void setWindDirection(String windDirection) {
+        this.windDirection = windDirection;
     }
 
-    public Float getWind_speed_mph() {
-        return this.wind_speed_mph;
+    public Float getWindSpeedMph() {
+        return this.windSpeedMph;
     }
 
-    public void setWind_speed_mph(Float wind_speed_mph) {
-        this.wind_speed_mph = wind_speed_mph;
+    public void setWindSpeedMph(Float windSpeedMph) {
+        this.windSpeedMph = windSpeedMph;
     }
 
-    public Float getPrecipitation_in() {
-        return this.precipitation_in;
+    public Float getPrecipitationIn() {
+        return this.precipitationIn;
     }
 
-    public void setPrecipitation_in(Float precipitation_in) {
-        this.precipitation_in = precipitation_in;
+    public void setPrecipitationIn(Float precipitationIn) {
+        this.precipitationIn = precipitationIn;
     }
 
-    public Float getWeather_condition() {
-        return this.weather_condition;
+    public String getWeatherCondition() {
+        return this.weatherCondition;
     }
 
-    public void setWeather_condition(Float weather_condition) {
-        this.weather_condition = weather_condition;
+    public void setWeatherCondition(String weatherCondition) {
+        this.weatherCondition = weatherCondition;
     }
 
     public Boolean isAmenity() {
@@ -406,16 +418,16 @@ public class Accident {
         this.crossing = crossing;
     }
 
-    public Boolean isGive_way() {
-        return this.give_way;
+    public Boolean isGiveWay() {
+        return this.giveWay;
     }
 
-    public Boolean getGive_way() {
-        return this.give_way;
+    public Boolean getGiveWay() {
+        return this.giveWay;
     }
 
-    public void setGive_way(Boolean give_way) {
-        this.give_way = give_way;
+    public void setGiveWay(Boolean giveWay) {
+        this.giveWay = giveWay;
     }
 
     public Boolean isJunction() {
@@ -430,16 +442,16 @@ public class Accident {
         this.junction = junction;
     }
 
-    public Boolean isNo_exit() {
-        return this.no_exit;
+    public Boolean isNoExit() {
+        return this.noExit;
     }
 
-    public Boolean getNo_exit() {
-        return this.no_exit;
+    public Boolean getNoExit() {
+        return this.noExit;
     }
 
-    public void setNo_exit(Boolean no_exit) {
-        this.no_exit = no_exit;
+    public void setNoExit(Boolean noExit) {
+        this.noExit = noExit;
     }
 
     public Boolean isRailway() {
@@ -490,72 +502,72 @@ public class Accident {
         this.stop = stop;
     }
 
-    public Boolean isTraffic_calming() {
-        return this.traffic_calming;
+    public Boolean isTrafficCalming() {
+        return this.trafficCalming;
     }
 
-    public Boolean getTraffic_calming() {
-        return this.traffic_calming;
+    public Boolean getTrafficCalming() {
+        return this.trafficCalming;
     }
 
-    public void setTraffic_calming(Boolean traffic_calming) {
-        this.traffic_calming = traffic_calming;
+    public void setTrafficCalming(Boolean trafficCalming) {
+        this.trafficCalming = trafficCalming;
     }
 
-    public Boolean isTraffic_signal() {
-        return this.traffic_signal;
+    public Boolean isTrafficSignal() {
+        return this.trafficSignal;
     }
 
-    public Boolean getTraffic_signal() {
-        return this.traffic_signal;
+    public Boolean getTrafficSignal() {
+        return this.trafficSignal;
     }
 
-    public void setTraffic_signal(Boolean traffic_signal) {
-        this.traffic_signal = traffic_signal;
+    public void setTrafficSignal(Boolean trafficSignal) {
+        this.trafficSignal = trafficSignal;
     }
 
-    public Boolean isTurning_loop() {
-        return this.turning_loop;
+    public Boolean isTurningLoop() {
+        return this.turningLoop;
     }
 
-    public Boolean getTurning_loop() {
-        return this.turning_loop;
+    public Boolean getTurningLoop() {
+        return this.turningLoop;
     }
 
-    public void setTurning_loop(Boolean turning_loop) {
-        this.turning_loop = turning_loop;
+    public void setTurningLoop(Boolean turningLoop) {
+        this.turningLoop = turningLoop;
     }
 
-    public String getSunrise_sunset() {
-        return this.sunrise_sunset;
+    public String getSunriseSunset() {
+        return this.sunriseSunset;
     }
 
-    public void setSunrise_sunset(String sunrise_sunset) {
-        this.sunrise_sunset = sunrise_sunset;
+    public void setSunriseSunset(String sunriseSunset) {
+        this.sunriseSunset = sunriseSunset;
     }
 
-    public String getCivil_twilight() {
-        return this.civil_twilight;
+    public String getCivilTwilight() {
+        return this.civilTwilight;
     }
 
-    public void setCivil_twilight(String civil_twilight) {
-        this.civil_twilight = civil_twilight;
+    public void setCivilTwilight(String civilTwilight) {
+        this.civilTwilight = civilTwilight;
     }
 
-    public String getNautical_twilight() {
-        return this.nautical_twilight;
+    public String getNauticalTwilight() {
+        return this.nauticalTwilight;
     }
 
-    public void setNautical_twilight(String nautical_twilight) {
-        this.nautical_twilight = nautical_twilight;
+    public void setNauticalTwilight(String nauticalTwilight) {
+        this.nauticalTwilight = nauticalTwilight;
     }
 
-    public String getAstronomical_twilight() {
-        return this.astronomical_twilight;
+    public String getAstronomicalTwilight() {
+        return this.astronomicalTwilight;
     }
 
-    public void setAstronomical_twilight(String astronomical_twilight) {
-        this.astronomical_twilight = astronomical_twilight;
+    public void setAstronomicalTwilight(String astronomicalTwilight) {
+        this.astronomicalTwilight = astronomicalTwilight;
     }
 
 }

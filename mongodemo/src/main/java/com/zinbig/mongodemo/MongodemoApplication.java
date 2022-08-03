@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
-@EnableMongoRepositories
-@EnableJpaRepositories
-//@EnableTransactionManagement
+@EnableMongoRepositories("com.zinbig.mongodemo.repositories")
+@EnableJpaRepositories(basePackages = "com.zinbig.mongodemo.repositories.JpaRepository")
+// @EnableTransactionManagement
 public class MongodemoApplication {
 
 	public static void main(String[] args) {
