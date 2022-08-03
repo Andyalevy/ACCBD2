@@ -18,11 +18,13 @@ public interface AccidentRepositoryPostgres extends CrudRepository<Accident, Str
 
     //List<Accident> accidentsNearAPointInARadius( String point, int radius);
 
-    //@Query("SELECT avg(distance_mi) AS average FROM accidents")
-    //Float averageDistanceOfAccidentsFromBeginingToEnd();
+    @Query(value="SELECT avg(distance_mi) AS average FROM accidents",nativeQuery = true)
+    Float averageDistanceMi();
 
     //List<Accident> fiveMostDangerousPoints();
 
-    //List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();   
-
+    //List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();  
+    
+    @Query(value="select street, count(street) as total from accidents group by street order by total desc limit 5;", nativeQuery = true)
+    List<String> findByCitiesWithMoreAccidents();
 }

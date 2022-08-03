@@ -75,4 +75,13 @@ public class DemoController {
         System.out.println("Accidentes cerca del punto "+ point + ": " + accidentsNear);
         return ResponseEntity.ok(accidentsNear);
     }
+
+    @GetMapping("/api/accidents/citiesWithMoreAccidents")
+    public ResponseEntity<List<String>> citiesWithMoreAccidents(
+            @RequestParam(required = false, defaultValue = "postgres") String name) throws ParseException {
+        
+        List<String> cities = this.accidentService.findByCitiesWithMoreAccidents(); 
+        System.out.println("Ciudades con más accidentes: "+ cities);
+        return ResponseEntity.ok(cities);
+    }
 }

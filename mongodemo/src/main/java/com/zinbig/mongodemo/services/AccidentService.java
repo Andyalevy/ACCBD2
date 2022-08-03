@@ -18,4 +18,6 @@ public interface AccidentService {
     public List<Accident> fiveMostDangerousPoints();
 
     public List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();
+
+    public List<String> findByCitiesWithMoreAccidents();
 }

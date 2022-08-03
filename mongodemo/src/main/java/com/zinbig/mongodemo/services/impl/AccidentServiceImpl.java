@@ -49,7 +49,7 @@ public class AccidentServiceImpl implements AccidentService {
 
     @Override
     public Float averageDistanceOfAccidentsFromBeginingToEnd() {
-        return this.accidentRepositoryMongo.averageDistanceOfAccidentsFromBeginingToEnd();
+        return this.accidentRepository.averageDistanceMi();
     }
 
     @Override
@@ -62,6 +62,11 @@ public class AccidentServiceImpl implements AccidentService {
     public List<Integer> averageDistanceFromEveryAccidentToTheNearestTen() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public List<String> findByCitiesWithMoreAccidents() {
+        return this.accidentRepository.findByCitiesWithMoreAccidents();
     }
 
 }
