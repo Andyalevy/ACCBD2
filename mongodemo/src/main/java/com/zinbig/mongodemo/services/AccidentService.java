@@ -3,7 +3,6 @@ package com.zinbig.mongodemo.services;
 import java.util.Date;
 import java.util.List;
 
-import com.zinbig.mongodemo.dtos.AccidentDTO;
 import com.zinbig.mongodemo.model.Accident;
 
 public interface AccidentService {
@@ -12,11 +11,11 @@ public interface AccidentService {
     
     public String mostCommonConditions();
 
-    public List<AccidentDTO> accidentsNearAPointInARadius( String point, int radius);
+    public List<Accident> accidentsNearAPointInARadius( String point, int radius);
 
-    public int averageDistanceOfAccidentsFromBeginingToEnd();
+    public Float averageDistanceOfAccidentsFromBeginingToEnd();
 
-    public List<AccidentDTO> fiveMostDangerousPoints();
+    public List<Accident> fiveMostDangerousPoints();
 
     public List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();
 }

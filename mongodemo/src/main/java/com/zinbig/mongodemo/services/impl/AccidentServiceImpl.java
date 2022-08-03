@@ -8,13 +8,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zinbig.mongodemo.dtos.DTOFactory;
-import com.zinbig.mongodemo.dtos.AccidentDTO;
 import com.zinbig.mongodemo.model.Accident;
 import com.zinbig.mongodemo.repositories.AccidentRepository;
+import com.zinbig.mongodemo.repositories.AccidentRepositoryMongo;
 import com.zinbig.mongodemo.services.AccidentService;
 
 /**
@@ -28,44 +29,33 @@ import com.zinbig.mongodemo.services.AccidentService;
 @Transactional
 public class AccidentServiceImpl implements AccidentService {
 
-    /**
-	 * Es el repositorio ligado a los usuarios.
-	 */
-	@Inject
+	@Autowired
 	private AccidentRepository accidentRepository;
-
-	/**
-	 * Es el objeto encargado de crear los DTOs.
-	 */
-	@Inject
-	private DTOFactory dtoFactory;
+    @Autowired
+    private AccidentRepositoryMongo accidentRepositoryMongo;
 
     @Override
     public List<Accident> accidentsBetweenDates(Date beginDate, Date endDate) {
-        // TODO Auto-generated method stub
-        return null;
+        return this.accidentRepository.accidentsBetweenDates(beginDate, endDate);
     }
 
     @Override
     public String mostCommonConditions() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public List<AccidentDTO> accidentsNearAPointInARadius(String point, int radius) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Accident> accidentsNearAPointInARadius(String point, int radius) {
+        return accidentRepositoryMongo.accidentsNearAPointInARadius(point, radius);
     }
 
     @Override
-    public int averageDistanceOfAccidentsFromBeginingToEnd() {
-        // TODO Auto-generated method stub
-        return 0;
+    public Float averageDistanceOfAccidentsFromBeginingToEnd() {
+        return this.accidentRepository.averageDistanceOfAccidentsFromBeginingToEnd();
     }
 
     @Override
-    public List<AccidentDTO> fiveMostDangerousPoints() {
+    public List<Accident> fiveMostDangerousPoints() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -75,8 +65,5 @@ public class AccidentServiceImpl implements AccidentService {
         // TODO Auto-generated method stub
         return null;
     }
-
-    
-
 
 }

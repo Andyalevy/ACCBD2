@@ -15,15 +15,15 @@ public interface AccidentRepositoryMongo extends MongoRepository<Accident, Strin
     @Query("{Start_Time:{$gte:?1, $lt:?2}}")
     public List<Accident> accidentsBetweenDates( Date beginDate, Date endDate);
 
-    public String mostCommonConditions();
+    //public String mostCommonConditions();
     
     @Query("{location:{$near:{$geometry:{type:'Point',coordinates:[?1]},$maxDistance: ?2,$minDistance:1}}}")
     public List<Accident> accidentsNearAPointInARadius( String point, int radius);
 
-    @Query("")
+    @Query("[{$group: {_id:null, avg_val:{$avg:'$Distance(mi)'}}}]")
     public int averageDistanceOfAccidentsFromBeginingToEnd();
 
-    public List<Accident> fiveMostDangerousPoints();
+    //public List<Accident> fiveMostDangerousPoints();
 
-    public List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();   
+    //public List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();   
 }

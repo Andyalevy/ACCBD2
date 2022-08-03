@@ -33,8 +33,6 @@ public class DemoController {
 	 */
 	@Inject
 	private AccidentService accidentService;
-	@Inject
-	private AccidentService accidentMongoService;
 
 	@GetMapping("/api/accidents/")
     public ResponseEntity<List<Accident>> listAccidents(@RequestParam(required = false) String start,
@@ -48,7 +46,7 @@ public class DemoController {
             formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
             Date startD = formatter.parse(start + "T00:00:00");
             Date endD = formatter.parse(end + "T00:00:00");
-            accidents = accidentMongoService.accidentsBetweenDates(startD, endD);
+            accidents = accidentService.accidentsBetweenDates(startD, endD);
         } else {
             Date startD = formatter.parse(start + "T00:00:00");
             Date endD = formatter.parse(end + "T00:00:00");
@@ -58,5 +56,14 @@ public class DemoController {
         System.out.println("Total accidents: " + accidents.size());
 
         return ResponseEntity.ok(accidents);
+    }
+
+    @GetMapping("/api/accidents/averageDistance/")
+    public ResponseEntity<Float> averageDistanceOfAccidentsFromBeginingToEnd(
+            @RequestParam(required = false, defaultValue = "postgres") String name) throws ParseException {
+            
+        Float averageDistance = accidentService.averageDistanceOfAccidentsFromBeginingToEnd(); 
+        System.out.println("Distancia promedio: " + averageDistance);
+        return ResponseEntity.ok(averageDistance);
     }
 }
