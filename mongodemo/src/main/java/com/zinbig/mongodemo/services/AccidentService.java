@@ -15,7 +15,7 @@ public interface AccidentService {
 
     public Float averageDistanceOfAccidentsFromBeginingToEnd();
 
-    public List<Accident> fiveMostDangerousPoints();
+    public List<Accident> fiveMostDangerousPoints( Double[] point, int radius);
 
     public List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();
 

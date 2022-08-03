@@ -3,7 +3,6 @@
  */
 package com.zinbig.mongodemo.resources;
 
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,7 +34,7 @@ public class DemoController {
 	@Inject
 	private AccidentService accidentService;
 
-	@GetMapping("/api/accidents/")
+	@GetMapping("/api/accidents/betweenDates")
     public ResponseEntity<List<Accident>> listAccidents(@RequestParam(required = false) String start,
             @RequestParam(required = false) String end,
             @RequestParam(required = false, defaultValue = "mongo") String name) throws ParseException {
@@ -55,7 +54,7 @@ public class DemoController {
         return ResponseEntity.ok(accidents);
     }
 
-    @GetMapping("/api/accidents/averageDistance/")
+    @GetMapping("/api/accidents/averageDistance")
     public ResponseEntity<Float> averageDistanceOfAccidentsFromBeginingToEnd(
             @RequestParam(required = false, defaultValue = "postgres") String name) throws ParseException {
             
@@ -64,7 +63,7 @@ public class DemoController {
         return ResponseEntity.ok(averageDistance);
     }
 
-    @GetMapping("/api/accidents/accidentsNear/")
+    @GetMapping("/api/accidents/accidentsNear")
     public ResponseEntity<List<Accident>> accidentsNear(
             @RequestParam(required = false, defaultValue = "[-84.032608, 39.063148]") String point,
             @RequestParam(required = false, defaultValue = "10000") int radius) throws ParseException {
@@ -83,5 +82,24 @@ public class DemoController {
         List<String> cities = this.accidentService.findByCitiesWithMoreAccidents(); 
         System.out.println("Ciudades con más accidentes: "+ cities);
         return ResponseEntity.ok(cities);
+    }
+
+    @GetMapping("/api/accidents/fiveMostDangerousPoints")
+    public ResponseEntity<List<Accident>> fiveMostDangerousPoints(
+        @RequestParam(required = false, defaultValue = "[-84.032608, 39.063148]") String point,
+        @RequestParam(required = false, defaultValue = "10000") int radius) throws ParseException {
+        
+        Double[] pointDouble = {-84.032608, 39.063148};
+
+        List<Accident> points = this.accidentService.fiveMostDangerousPoints( pointDouble, radius); 
+        System.out.println("Puntos con más accidentes: "+ points);
+        return ResponseEntity.ok(points);
+    }
+
+    @GetMapping("/api/accidents/averageDistanceFromEveryAccidentToTheNearestTen")
+    public ResponseEntity<List<Integer>> averageDistanceFromEveryAccidentToTheNearestTen(
+            @RequestParam(required = false, defaultValue = "postgres") String name) throws ParseException {
+        List<Integer> average = this.accidentService.averageDistanceFromEveryAccidentToTheNearestTen();
+        return ResponseEntity.ok(average);
     }
 }

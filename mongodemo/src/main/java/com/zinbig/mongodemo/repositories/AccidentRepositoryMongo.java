@@ -21,10 +21,15 @@ public interface AccidentRepositoryMongo extends MongoRepository<Accident, Strin
     @Query("{location:{$near:{$geometry:{type:'Point',coordinates:?0},$maxDistance: ?1,$minDistance:1}}}")
     List<Accident> accidentsNearAPointInARadius( Double[] point, int radius);
 
-    @Aggregation( pipeline = {"{$group: {_id:null, avg_val:{$avg:'$Distance(mi)'}}}"})
+    @Aggregation( pipeline = {"{$group: {_id:null, avg_val:{$avg:'$Distance(mi)'}}}",})
     Float averageDistanceOfAccidentsFromBeginingToEnd();
 
-    // List<Accident> fiveMostDangerousPoints();
+    @Aggregation( pipeline = {"{$geoNear: {near: { type: 'Point', coordinates: ?0 },distanceField: 'dist.calculated',maxDistance: ?1, spherical: true}}",
+    "{$group : {_id: '$location', amount: {$sum: 1}}}",
+    "{$sort: {amount:-1}}","{$limit : 5}"})
+    List<Accident> fiveMostDangerousPoints(Double[] point, int radius);
 
-    // List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();   
+    @Aggregation( pipeline = {"{}",
+    "forEach(function(doc){print('{\'_id\' : ObjectId(\'' + doc._id + '\'), \'average\' : ' + db.getCollection('accident').aggregate([{$geoNear: {near: {type: 'Point', coordinates: [doc.Start_Lng, doc.Start_Lat]}, distanceField: 'distance', spherical: true}},{$limit:10}, {$group: {_id:null, avg_val:{$avg:'$distance'}}}]).toArray()[0]['avg_val'] + '}');};"} )
+    List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();   
 }
