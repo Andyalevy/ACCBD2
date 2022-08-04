@@ -7,7 +7,7 @@ CREATE TABLE accidents (
 	id VARCHAR(10) NOT NULL,
 	source VARCHAR ( 256 ), 
 	tmc FLOAT,
-	severety SMALLINT , 
+	severity SMALLINT , 
 	start_time TIMESTAMP,
     end_time TIMESTAMP,
     start_lat DECIMAL (8,6),

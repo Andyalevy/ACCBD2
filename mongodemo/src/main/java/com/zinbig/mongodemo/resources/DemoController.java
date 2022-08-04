@@ -37,27 +37,22 @@ public class DemoController {
 
 	@GetMapping("/api/accidents/betweenDates")
     public ResponseEntity<List<Accident>> listAccidents(@RequestParam(required = false) String start,
-            @RequestParam(required = false) String end,
-            @RequestParam(required = false, defaultValue = "mongo") String name) throws ParseException {
+            @RequestParam(required = false) String end) throws ParseException {
         
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
         List<Accident> accidents;
-        if (name.equals("mongo")) {
-            formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-        }
-        Date startD = formatter.parse(start + "T00:00:00");
-        Date endD = formatter.parse(end + "T00:00:00");
-        accidents = accidentService.accidentsBetweenDates(startD, endD);
-        // print total accidents
+        //formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+        Date startDate = formatter.parse(start + "T00:00:00");
+        Date endDate = formatter.parse(end + "T00:00:00");
+        accidents = accidentService.accidentsBetweenDates(startDate, endDate);
         System.out.println("Total accidents: " + accidents.size());
 
         return ResponseEntity.ok(accidents);
     }
 
     @GetMapping("/api/accidents/averageDistance")
-    public ResponseEntity<Float> averageDistanceOfAccidentsFromBeginingToEnd(
-            @RequestParam(required = false, defaultValue = "postgres") String name) throws ParseException {
+    public ResponseEntity<Float> averageDistanceOfAccidentsFromBeginingToEnd() throws ParseException {
             
         Float averageDistance = accidentService.averageDistanceOfAccidentsFromBeginningToEnd();
         System.out.println("Distancia promedio: " + averageDistance);
@@ -66,19 +61,19 @@ public class DemoController {
 
     @GetMapping("/api/accidents/accidentsNear")
     public ResponseEntity<List<Accident>> accidentsNear(
-            @RequestParam(required = false, defaultValue = "[-84.032608, 39.063148]") String point,
+            @RequestParam(required = false, defaultValue = "-84.032608") String longitud,
+            @RequestParam(required = false, defaultValue = "39.063148") String latitud,
             @RequestParam(required = false, defaultValue = "10000") int radius) throws ParseException {
         
-        Double[] pointDouble = {-84.032608, 39.063148};
+        Double[] point = {Double.parseDouble(longitud), Double.parseDouble(latitud)};
 
-        List<Accident> accidentsNear = accidentService.accidentsNearAPointInARadius(pointDouble,radius); 
+        List<Accident> accidentsNear = accidentService.accidentsNearAPointInARadius(point,radius); 
         System.out.println("Accidentes cerca del punto "+ point + ": " + accidentsNear);
         return ResponseEntity.ok(accidentsNear);
     }
 
     @GetMapping("/api/accidents/citiesWithMoreAccidents")
-    public ResponseEntity<List<String>> citiesWithMoreAccidents(
-            @RequestParam(required = false, defaultValue = "postgres") String name) throws ParseException {
+    public ResponseEntity<List<String>> citiesWithMoreAccidents() throws ParseException {
         
         List<String> cities = this.accidentService.findByCitiesWithMoreAccidents(); 
         System.out.println("Ciudades con más accidentes: "+ cities);
@@ -87,19 +82,19 @@ public class DemoController {
 
     @GetMapping("/api/accidents/fiveMostDangerousPoints")
     public ResponseEntity<List<Accident>> fiveMostDangerousPoints(
-        @RequestParam(required = false, defaultValue = "[-84.032608, 39.063148]") String point,
+        @RequestParam(required = false, defaultValue = "-84.032608") String longitud,
+        @RequestParam(required = false, defaultValue = "39.063148") String latitud,
         @RequestParam(required = false, defaultValue = "10000") int radius) throws ParseException {
         
-        Double[] pointDouble = {-84.032608, 39.063148};
-
-        List<Accident> points = this.accidentService.fiveMostDangerousPoints( pointDouble, radius); 
+        Double[] point = {Double.parseDouble(longitud), Double.parseDouble(latitud)};
+        
+        List<Accident> points = this.accidentService.fiveMostDangerousPoints( point, radius); 
         System.out.println("Puntos con más accidentes: "+ points);
         return ResponseEntity.ok(points);
     }
 
     @GetMapping("/api/accidents/averageDistanceFromEveryAccidentToTheNearestTen")
-    public ResponseEntity<List<AccidentWithDistance>> averageDistanceFromEveryAccidentToTheNearestTen(
-            @RequestParam(required = false, defaultValue = "mongo") String name) throws ParseException {
+    public ResponseEntity<List<AccidentWithDistance>> averageDistanceFromEveryAccidentToTheNearestTen() throws ParseException {
         List<AccidentWithDistance> average = this.accidentService.averageDistanceFromEveryAccidentToTheNearestTen();
         return ResponseEntity.ok(average);
     }
