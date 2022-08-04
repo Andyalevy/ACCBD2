@@ -25,6 +25,6 @@ public interface AccidentRepositoryPostgres extends CrudRepository<Accident, Str
 
     //List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();  
     
-    @Query(value="select street, count(street) as total from accidents group by street order by total desc limit 5;", nativeQuery = true)
+    @Query(value="select city, count(city) as total from accidents group by city order by total desc limit 5;", nativeQuery = true)
     List<String> findByCitiesWithMoreAccidents();
 }

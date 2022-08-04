@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import javax.inject.Inject;
 
@@ -36,15 +35,16 @@ public class DemoController {
 	private AccidentService accidentService;
 
 	@GetMapping("/api/accidents/betweenDates")
-    public ResponseEntity<List<Accident>> listAccidents(@RequestParam(required = false) String start,
-            @RequestParam(required = false) String end) throws ParseException {
+    public ResponseEntity<List<Accident>> listAccidents(
+        @RequestParam(required = false, defaultValue = "2016-02-01") String start,
+        @RequestParam(required = false, defaultValue = "2016-03-01") String end) throws ParseException {
         
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
 
         List<Accident> accidents;
         //formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-        Date startDate = formatter.parse(start + "T00:00:00");
-        Date endDate = formatter.parse(end + "T00:00:00");
+        Date startDate = formatter.parse(start );
+        Date endDate = formatter.parse(end );
         accidents = accidentService.accidentsBetweenDates(startDate, endDate);
         System.out.println("Total accidents: " + accidents.size());
 
