@@ -9,6 +9,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.zinbig.mongodemo.model.AccidentWithDistance;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,9 @@ import com.zinbig.mongodemo.model.Accident;
 import com.zinbig.mongodemo.repositories.AccidentRepositoryMongo;
 import com.zinbig.mongodemo.repositories.JpaRepository.AccidentRepositoryPostgres;
 import com.zinbig.mongodemo.services.AccidentService;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * Esta clase contiene la implementación de los servicios relacionados con los
@@ -44,8 +48,9 @@ public class AccidentServiceImpl implements AccidentService {
     }
 
     @Override
-    public List<Accident> accidentsNearAPointInARadius(Double[] point, int radius) {
-        return accidentRepositoryMongo.accidentsNearAPointInARadius(point, radius);
+    public List<Accident> accidentsNearAPointInARadius(Double[] point, int radius, int page) {
+        Pageable pageWithFiveElements = PageRequest.of(page, 5);
+        return accidentRepositoryMongo.accidentsNearAPointInARadius(point, radius, pageWithFiveElements);
     }
 
     @Override

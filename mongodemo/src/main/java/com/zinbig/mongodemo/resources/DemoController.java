@@ -59,15 +59,17 @@ public class DemoController {
         return ResponseEntity.ok(averageDistance);
     }
 
+    //"http://localhost:8080/api/accidents/accidentsNear?longitud=-84&latitud=39&radius=10000&page=0"
     @GetMapping("/api/accidents/accidentsNear")
     public ResponseEntity<List<Accident>> accidentsNear(
-            @RequestParam(required = false, defaultValue = "-84.032608") String longitud,
-            @RequestParam(required = false, defaultValue = "39.063148") String latitud,
-            @RequestParam(required = false, defaultValue = "10000") int radius) throws ParseException {
+            @RequestParam(required = true) String longitude,
+            @RequestParam(required = true) String latitude,
+            @RequestParam(required = true) int radius,
+            @RequestParam(required = true) int page) throws ParseException {
         
-        Double[] point = {Double.parseDouble(longitud), Double.parseDouble(latitud)};
+        Double[] point = {Double.parseDouble(longitude), Double.parseDouble(latitude)};
 
-        List<Accident> accidentsNear = accidentService.accidentsNearAPointInARadius(point,radius); 
+        List<Accident> accidentsNear = accidentService.accidentsNearAPointInARadius(point,radius,page);
         System.out.println("Accidentes cerca del punto "+ point + ": " + accidentsNear);
         return ResponseEntity.ok(accidentsNear);
     }

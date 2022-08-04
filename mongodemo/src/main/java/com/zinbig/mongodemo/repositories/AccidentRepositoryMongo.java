@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 import com.zinbig.mongodemo.model.Accident;
 import com.zinbig.mongodemo.model.AccidentWithDistance;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 @Repository
 public interface AccidentRepositoryMongo extends MongoRepository<Accident, String> {
 
@@ -18,9 +21,9 @@ public interface AccidentRepositoryMongo extends MongoRepository<Accident, Strin
     List<Accident> findByStartTimeBetween( Date beginDate, Date endDate);
 
     // String mostCommonConditions();
-    
+
     @Query("{location:{$near:{$geometry:{type:'Point',coordinates:?0},$maxDistance: ?1,$minDistance:1}}}")
-    List<Accident> accidentsNearAPointInARadius( Double[] point, int radius);
+    List<Accident> accidentsNearAPointInARadius( Double[] point, int radius, Pageable pageable);
 
     @Aggregation( pipeline = {"{$group: {_id:null, avg_val:{$avg:'$Distance(mi)'}}}",})
     Float averageDistanceOfAccidentsFromBeginningToEnd();

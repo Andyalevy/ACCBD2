@@ -12,7 +12,7 @@ public interface AccidentService {
     
     public String mostCommonConditions();
 
-    public List<Accident> accidentsNearAPointInARadius( Double[] point, int radius);
+    public List<Accident> accidentsNearAPointInARadius( Double[] point, int radius, int page);
 
     public Float averageDistanceOfAccidentsFromBeginningToEnd();
 
