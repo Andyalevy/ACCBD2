@@ -118,8 +118,6 @@ public class Accident {
     private String nauticalTwilight;
     @Field("Astronomical_Twilight")
     private String astronomicalTwilight;
-    @Field("location")
-    private String location;
 
 
     public Accident() {
@@ -175,7 +173,6 @@ public class Accident {
         this.civilTwilight = civilTwilight;
         this.nauticalTwilight = nauticalTwilight;
         this.astronomicalTwilight = astronomicalTwilight;
-        this.location = location;
     }
 
 
@@ -621,13 +618,5 @@ public class Accident {
 
     public void setAstronomicalTwilight(String astronomicalTwilight) {
         this.astronomicalTwilight = astronomicalTwilight;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 }
