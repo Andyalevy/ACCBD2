@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zinbig.mongodemo.model.Accident;
+import com.zinbig.mongodemo.model.AccidentWithDistance;
 import com.zinbig.mongodemo.services.AccidentService;
 
 /**
@@ -58,7 +59,7 @@ public class DemoController {
     public ResponseEntity<Float> averageDistanceOfAccidentsFromBeginingToEnd(
             @RequestParam(required = false, defaultValue = "postgres") String name) throws ParseException {
             
-        Float averageDistance = accidentService.averageDistanceOfAccidentsFromBeginingToEnd(); 
+        Float averageDistance = accidentService.averageDistanceOfAccidentsFromBeginningToEnd();
         System.out.println("Distancia promedio: " + averageDistance);
         return ResponseEntity.ok(averageDistance);
     }
@@ -97,9 +98,9 @@ public class DemoController {
     }
 
     @GetMapping("/api/accidents/averageDistanceFromEveryAccidentToTheNearestTen")
-    public ResponseEntity<List<Integer>> averageDistanceFromEveryAccidentToTheNearestTen(
-            @RequestParam(required = false, defaultValue = "postgres") String name) throws ParseException {
-        List<Integer> average = this.accidentService.averageDistanceFromEveryAccidentToTheNearestTen();
+    public ResponseEntity<List<AccidentWithDistance>> averageDistanceFromEveryAccidentToTheNearestTen(
+            @RequestParam(required = false, defaultValue = "mongo") String name) throws ParseException {
+        List<AccidentWithDistance> average = this.accidentService.averageDistanceFromEveryAccidentToTheNearestTen();
         return ResponseEntity.ok(average);
     }
 }

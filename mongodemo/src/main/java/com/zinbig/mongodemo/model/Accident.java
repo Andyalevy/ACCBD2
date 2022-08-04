@@ -1,6 +1,9 @@
 /** Este paquete contiene las clases que representan las entidades del dominio. */
 package com.zinbig.mongodemo.model;
 
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.awt.*;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,71 +16,120 @@ import javax.persistence.Table;
 @Entity
 @Table(name="accidents")
 public class Accident {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-
+    @Field("Source")
     private String source;
+    @Field("TMC")
     private Float tmc;
-    private Integer severety;
-    private Date startTime;
-    private Date endTime;
+    @Field("Severity")
+    private Integer severity;
+    @Field("Start_Time")
+    private String startTime;
+    @Field("End_Time")
+    private String endTime;
+    @Field("Start_Lat")
     private Float startLat;
+    @Field("Start_Lng")
     private Float startLng;
+    @Field("End_Lat")
     private Float endLat;
+    @Field("End_Lng")
     private Float endLng;
+    @Field("Distance(mi)")
     private Float distanceMi;
+    @Field("Description")
     private String description;
+    @Field("Number")
     private Float number;
+    @Field("Street")
     private String street;
+    @Field("Side")
     private char side;
+    @Field("City")
     private String city;
+    @Field("County")
     private String county;
+    @Field("State")
     private String state;
+    @Field("Zipcode")
     private String zipcode;
+    @Field("Country")
     private String country;
+    @Field("Timezone")
     private String timezone;
+    @Field("Airport_Code")
     private String airportCode;
+    @Field("Weather_Timestamp")
     private String weatherTimestamp;
-    @Column(name="temperature_f")
+    @Field("Temperature(F)")
+    @Column(name = "temperature_f")
     private Float temperatureF;
-    @Column(name="wind_chill_f")
+    @Field("Wind_Chill(F)")
+    @Column(name = "wind_chill_f")
     private String windChillF;
+    @Field("Humidity(%)")
     private String humidity;
+    @Field("Pressure(in)")
     private String pressureIn;
+    @Field("Visibility(mi)")
     private Float visibilityMi;
+    @Field("Wind_Direction")
     private String windDirection;
+    @Field("Wind_Speed(mph)")
     private Float windSpeedMph;
+    @Field("Precipitation(in)")
     private Float precipitationIn;
+    @Field("Weather_Condition")
     private String weatherCondition;
+    @Field("Amenity")
     private Boolean amenity;
+    @Field("Bump")
     private Boolean bump;
+    @Field("Crossing")
     private Boolean crossing;
+    @Field("Give_Way")
     private Boolean giveWay;
+    @Field("Junction")
     private Boolean junction;
+    @Field("No_Exit")
     private Boolean noExit;
+    @Field("Railway")
     private Boolean railway;
+    @Field("Roundabout")
     private Boolean roundabout;
+    @Field("Station")
     private Boolean station;
+    @Field("Stop")
     private Boolean stop;
+    @Field("Traffic_Calming")
     private Boolean trafficCalming;
+    @Field("Traffic_Signal")
     private Boolean trafficSignal;
+    @Field("Turning_Loop")
     private Boolean turningLoop;
+    @Field("Sunrise_Sunset")
     private String sunriseSunset;
+    @Field("Civil_Twilight")
     private String civilTwilight;
+    @Field("Nautical_Twilight")
     private String nauticalTwilight;
+    @Field("Astronomical_Twilight")
     private String astronomicalTwilight;
+    @Field("location")
+    private String location;
 
 
     public Accident() {
     }
 
-    public Accident(String id, String source, Float tmc, Integer severety, Date startTime, Date endTime, Float startLat, Float startLng, Float endLat, Float endLng, Float distanceMi, String description, Float number, String street, char side, String city, String county, String state, String zipcode, String country, String timezone, String airportCode, String weatherTimestamp, Float temperatureF, String windChillF, String humidity, String pressureIn, Float visibilityMi, String windDirection, Float windSpeedMph, Float precipitationIn, String weatherCondition, Boolean amenity, Boolean bump, Boolean crossing, Boolean giveWay, Boolean junction, Boolean noExit, Boolean railway, Boolean roundabout, Boolean station, Boolean stop, Boolean trafficCalming, Boolean trafficSignal, Boolean turningLoop, String sunriseSunset, String civilTwilight, String nauticalTwilight, String astronomicalTwilight) {
+    public Accident(String id, String source, Float tmc, Integer severity, String startTime, String endTime, Float startLat, Float startLng, Float endLat, Float endLng, Float distanceMi, String description, Float number, String street, char side, String city, String county, String state, String zipcode, String country, String timezone, String airportCode, String weatherTimestamp, Float temperatureF, String windChillF, String humidity, String pressureIn, Float visibilityMi, String windDirection, Float windSpeedMph, Float precipitationIn, String weatherCondition, Boolean amenity, Boolean bump, Boolean crossing, Boolean giveWay, Boolean junction, Boolean noExit, Boolean railway, Boolean roundabout, Boolean station, Boolean stop, Boolean trafficCalming, Boolean trafficSignal, Boolean turningLoop, String sunriseSunset, String civilTwilight, String nauticalTwilight, String astronomicalTwilight, String location) {
         this.id = id;
         this.source = source;
         this.tmc = tmc;
-        this.severety = severety;
+        this.severity = severity;
         this.startTime = startTime;
         this.endTime = endTime;
         this.startLat = startLat;
@@ -123,6 +175,7 @@ public class Accident {
         this.civilTwilight = civilTwilight;
         this.nauticalTwilight = nauticalTwilight;
         this.astronomicalTwilight = astronomicalTwilight;
+        this.location = location;
     }
 
 
@@ -150,27 +203,27 @@ public class Accident {
         this.tmc = tmc;
     }
 
-    public Integer getSeverety() {
-        return this.severety;
+    public Integer getSeverity() {
+        return this.severity;
     }
 
-    public void setSeverety(Integer severety) {
-        this.severety = severety;
+    public void setSeverity(Integer severity) {
+        this.severity = severity;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return this.startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return this.endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
@@ -570,4 +623,11 @@ public class Accident {
         this.astronomicalTwilight = astronomicalTwilight;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }

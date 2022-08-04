@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.zinbig.mongodemo.model.AccidentWithDistance;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,8 +49,8 @@ public class AccidentServiceImpl implements AccidentService {
     }
 
     @Override
-    public Float averageDistanceOfAccidentsFromBeginingToEnd() {
-        return this.accidentRepositoryMongo.averageDistanceOfAccidentsFromBeginingToEnd();
+    public Float averageDistanceOfAccidentsFromBeginningToEnd() {
+        return this.accidentRepositoryMongo.averageDistanceOfAccidentsFromBeginningToEnd();
     }
 
     @Override
@@ -59,7 +60,7 @@ public class AccidentServiceImpl implements AccidentService {
     }
 
     @Override
-    public List<Integer> averageDistanceFromEveryAccidentToTheNearestTen() {
+    public List<AccidentWithDistance> averageDistanceFromEveryAccidentToTheNearestTen() {
         // TODO Auto-generated method stub
         return this.accidentRepositoryMongo.averageDistanceFromEveryAccidentToTheNearestTen();
     }

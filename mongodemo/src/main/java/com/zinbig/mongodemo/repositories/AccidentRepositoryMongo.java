@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.zinbig.mongodemo.model.Accident;
+import com.zinbig.mongodemo.model.AccidentWithDistance;
 
 @Repository
 public interface AccidentRepositoryMongo extends MongoRepository<Accident, String> {
@@ -22,14 +23,14 @@ public interface AccidentRepositoryMongo extends MongoRepository<Accident, Strin
     List<Accident> accidentsNearAPointInARadius( Double[] point, int radius);
 
     @Aggregation( pipeline = {"{$group: {_id:null, avg_val:{$avg:'$Distance(mi)'}}}",})
-    Float averageDistanceOfAccidentsFromBeginingToEnd();
+    Float averageDistanceOfAccidentsFromBeginningToEnd();
 
     @Aggregation( pipeline = {"{$geoNear: {near: { type: 'Point', coordinates: ?0 },distanceField: 'dist.calculated',maxDistance: ?1, spherical: true}}",
     "{$group : {_id: '$location', amount: {$sum: 1}}}",
     "{$sort: {amount:-1}}","{$limit : 5}"})
     List<Accident> fiveMostDangerousPoints(Double[] point, int radius);
 
-    @Aggregation( pipeline = {"{}",
-    "forEach(function(doc){print('{\'_id\' : ObjectId(\'' + doc._id + '\'), \'average\' : ' + db.getCollection('accident').aggregate([{$geoNear: {near: {type: 'Point', coordinates: [doc.Start_Lng, doc.Start_Lat]}, distanceField: 'distance', spherical: true}},{$limit:10}, {$group: {_id:null, avg_val:{$avg:'$distance'}}}]).toArray()[0]['avg_val'] + '}');};"} )
-    List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();   
+    // Esta consulta nos funciona en consola pero no conseguimos que retorne valor valido para 'distancia' a traves de la API.
+    @Query("{}.map(function(doc){return db.accident.aggregate([{$geoNear: {near: {type: \"Point\", coordinates: [doc.Start_Lng, doc.Start_Lat]}, distanceField: \"distance\", spherical: true}},{$limit:10}, {$group: {_id:null, distance:{$avg:\"$distance\"}}}, {$set: {_id: doc._id}}]).toArray()[0];})")
+    List<AccidentWithDistance> averageDistanceFromEveryAccidentToTheNearestTen();
 }
