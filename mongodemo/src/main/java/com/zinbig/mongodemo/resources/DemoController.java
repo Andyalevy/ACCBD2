@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import javax.inject.Inject;
 
 import org.springframework.http.ResponseEntity;
@@ -37,14 +36,17 @@ public class DemoController {
 	@GetMapping("/api/accidents/betweenDates")
     public ResponseEntity<List<Accident>> listAccidents(
         @RequestParam(required = false, defaultValue = "2016-02-01") String start,
-        @RequestParam(required = false, defaultValue = "2016-03-01") String end) throws ParseException {
+        @RequestParam(required = false, defaultValue = "2019-03-01") String end) throws ParseException {
         
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         List<Accident> accidents;
-        //formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-        Date startDate = formatter.parse(start );
-        Date endDate = formatter.parse(end );
+        Date startDate = formatter.parse(start + "T00:00:00");
+        Date endDate = formatter.parse(end + "T00:00:00");
+        System.out.println(end);
+        System.out.println(startDate);
+        System.out.println(endDate);
+
         accidents = accidentService.accidentsBetweenDates(startDate, endDate);
         System.out.println("Total accidents: " + accidents.size());
 
@@ -57,6 +59,14 @@ public class DemoController {
         Float averageDistance = accidentService.averageDistanceOfAccidentsFromBeginningToEnd();
         System.out.println("Distancia promedio: " + averageDistance);
         return ResponseEntity.ok(averageDistance);
+    }
+
+    @GetMapping("/api/accidents/mostCommonConditions")
+    public ResponseEntity<String> mostCommonConditions() throws ParseException {
+
+        String mostCommonCondition = this.accidentService.mostCommonConditions();
+        System.out.println("Condiciones más comunes: "+ mostCommonCondition);
+        return ResponseEntity.ok(mostCommonCondition);
     }
 
     @GetMapping("/api/accidents/accidentsNear")
