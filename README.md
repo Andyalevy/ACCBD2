@@ -13,7 +13,7 @@ accident --> nombre de la colección y de la tabla.
     bases de datos ya inicializadas.
 
 ## apis
-    Las api son utilizadas para enviar y recibir informarción.
+    Las api son utilizadas para enviar y recibir información.
     
     --- beetween Dates ---
     /api/accidents/betweenDates
