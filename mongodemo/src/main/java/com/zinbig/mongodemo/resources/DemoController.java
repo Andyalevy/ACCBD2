@@ -55,14 +55,16 @@ public class DemoController {
         return ResponseEntity.ok(accidents);
     }
 
+    //http://localhost:8080/api/accidents/averageDistance
     @GetMapping("/api/accidents/averageDistance")
-    public ResponseEntity<Float> averageDistanceOfAccidentsFromBeginingToEnd() throws ParseException {
+    public ResponseEntity<Float> averageDistanceOfAccidentsFromBeginningToEnd() throws ParseException {
             
         Float averageDistance = accidentService.averageDistanceOfAccidentsFromBeginningToEnd();
         System.out.println("Distancia promedio: " + averageDistance);
         return ResponseEntity.ok(averageDistance);
     }
 
+    //http://localhost:8080/api/accidents/mostCommonConditions
     @GetMapping("/api/accidents/mostCommonConditions")
     public ResponseEntity<String> mostCommonConditions() throws ParseException {
 
