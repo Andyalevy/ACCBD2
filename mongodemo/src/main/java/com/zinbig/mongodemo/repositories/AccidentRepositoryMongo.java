@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 @Repository
 public interface AccidentRepositoryMongo extends MongoRepository<Accident, String> {
 
+    // Esto deberia andar pero por alguna razon falla.
     //@Query("{Start_Time:{$gte:?0, $lt:?1}}")
     List<Accident> findByStartTimeBetween( Date beginDate, Date endDate, Pageable pageable);
 
