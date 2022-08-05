@@ -20,7 +20,7 @@ public interface AccidentService {
     /**
      * @return las condiciones más comunes de los accidentes
      */
-    public String mostCommonConditions();
+    public Accident mostCommonConditions();
 
     /**
      * @param point punto

@@ -58,9 +58,9 @@ public class DemoController {
 
     //http://localhost:8080/api/accidents/mostCommonConditions
     @GetMapping("/api/accidents/mostCommonConditions")
-    public ResponseEntity<String> mostCommonConditions() throws ParseException {
+    public ResponseEntity<Accident> mostCommonConditions() throws ParseException {
 
-        String mostCommonCondition = this.accidentService.mostCommonConditions();
+        Accident mostCommonCondition = this.accidentService.mostCommonConditions();
         System.out.println("Condiciones más comunes: "+ mostCommonCondition);
         return ResponseEntity.ok(mostCommonCondition);
     }

@@ -4,6 +4,7 @@ services:
 
   postgres:
     image: postgres:latest
+    container_name: postgres
     restart: always
     volumes:
       - ./US_Accidents_Dec19.csv:/tmp/US_Accidents_Dec19.csv
@@ -18,6 +19,7 @@ services:
 
   mongo:
     image: mongo:latest
+    container_name: mongo
     restart: always
     command: --quiet
     volumes:
@@ -26,4 +28,16 @@ services:
       - ./init-import-mongo02.js:/docker-entrypoint-initdb.d/init-import-mongo02.js
     ports:
       - "27017:27017"
-    
+ 
+  mongodemo:
+    image: mongodemo
+    container_name: mongodemo
+    volumes:
+      - type: bind
+        source: ../mongodemo
+        target: /mongodemo
+    depends_on:
+      - mongo
+      - postgres
+    ports:
+      - "8080:8080"

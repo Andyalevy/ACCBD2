@@ -2,8 +2,6 @@ package com.zinbig.mongodemo.model;
 
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.awt.*;
-
 public class LocationWithAmount {
 
     @Field("location")
