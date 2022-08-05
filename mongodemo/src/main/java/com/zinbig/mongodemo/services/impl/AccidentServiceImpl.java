@@ -21,13 +21,6 @@ import com.zinbig.mongodemo.services.AccidentService;
 
 import org.springframework.data.domain.Pageable;
 
-/**
- * Esta clase contiene la implementación de los servicios relacionados con los
- * usuarios.
- * 
- * @author Javier Bazzocco
- *
- */
 @Service
 @Transactional
 public class AccidentServiceImpl implements AccidentService {
@@ -37,12 +30,21 @@ public class AccidentServiceImpl implements AccidentService {
     @Inject
     private AccidentRepositoryMongo accidentRepositoryMongo;
 
+    /**
+     * @param beginDate fecha de inicio
+     * @param endDate fecha de fin
+     * @param page número de página
+     * @return los accidentes ocurridos entre 2 fechas
+     */
     @Override
     public List<Accident> accidentsBetweenDates(Date beginDate, Date endDate, int page) {
         Pageable pageWithFiveElements = PageRequest.of(page, 5);
         return this.accidentRepository.findByStartTimeBetween(beginDate, endDate, pageWithFiveElements);
     }
 
+    /**
+     * @return las condiciones más comunes de los accidentes
+     */
     @Override
     public String mostCommonConditions() {
         String result = "\nAmenity: "+this.accidentRepository.mostCommonConditionAmenity();
@@ -87,28 +89,49 @@ public class AccidentServiceImpl implements AccidentService {
         return result;
     }
 
+    /**
+     * @param point punto
+     * @param radius radio
+     * @param page número de página
+     * @return los accidentes ocurridos dentro de un radio
+     */
     @Override
     public List<Accident> accidentsNearAPointInARadius(Double[] point, int radius, int page) {
         Pageable pageWithFiveElements = PageRequest.of(page, 5);
         return accidentRepositoryMongo.accidentsNearAPointInARadius(point, radius, pageWithFiveElements);
     }
 
+    /**
+     * @return la distancia promedio desde el inicio al fin del accidente
+     */
     @Override
     public Float averageDistanceOfAccidentsFromBeginningToEnd() {
         return this.accidentRepositoryMongo.averageDistanceOfAccidentsFromBeginningToEnd();
     }
 
+    /**
+     * @param point punto
+     * @param radius radio
+     * @return los 5 puntos más peligrosos
+     */
     @Override
     public List<LocationWithAmount> fiveMostDangerousPoints(Double[] point, int radius) {
         return this.accidentRepositoryMongo.fiveMostDangerousPoints(point, radius);
     }
 
+    /**
+     * @param page número de página
+     * @return la distancia promedio que existe entre cada accidente y los 10 más cercanos
+     */
     @Override
     public List<AccidentWithDistance> averageDistanceFromEveryAccidentToTheNearestTen(int page) {
         Pageable pageWithFiveElements = PageRequest.of(page, 5);
         return this.accidentRepositoryMongo.averageDistanceFromEveryAccidentToTheNearestTen(pageWithFiveElements);
     }
 
+    /**
+     * @return el nombre de las 5 calles con más accidentes
+     */
     @Override
     public List<String> findByStreetsWithMoreAccidents() {
         return this.accidentRepository.findByStreetsWithMoreAccidents();
