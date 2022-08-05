@@ -45,45 +45,45 @@ public class AccidentServiceImpl implements AccidentService {
 
     @Override
     public String mostCommonConditions() {
-        String result = "Amenity: "+this.accidentRepository.mostCommonConditionAmenity();
-        result =  result +", AstronomicalTwilight: "+ this.accidentRepository.mostCommonConditionAstronomicalTwilight();
-        result = result +", Bump: "+ this.accidentRepository.mostCommonConditionBump();
-        result = result +", City: "+ this.accidentRepository.mostCommonConditionCity();
-        result = result +", CivilTwilight: "+ this.accidentRepository.mostCommonConditionCivilTwilight();
-        result = result +", County: "+ this.accidentRepository.mostCommonConditionCounty();
-        result = result +", Crossing: "+ this.accidentRepository.mostCommonConditionCrossing();
-        result = result +", DistanceMi: "+ this.accidentRepository.mostCommonConditionDistanceMi();
-        result = result +", EndTime: "+ this.accidentRepository.mostCommonConditionEndTime();
-        result = result +", GiveWay: "+ this.accidentRepository.mostCommonConditionGiveWay();
-        result = result +", Humidity: "+ this.accidentRepository.mostCommonConditionHumidity();
-        result = result +", Junction: "+ this.accidentRepository.mostCommonConditionJunction();
-        result = result +", NoExit: "+ this.accidentRepository.mostCommonConditionNoExit();
-        result = result +", NoExit: "+ this.accidentRepository.mostCommonConditionNoExit();
-        result = result +", NuaticalTwilight: "+ this.accidentRepository.mostCommonConditionNuaticalTwilight();
-        result = result +", Number: "+ this.accidentRepository.mostCommonConditionNumber();
-        result = result +", Precipitation: "+ this.accidentRepository.mostCommonConditionPrecipitation();
-        result = result +", PressureIn: "+ this.accidentRepository.mostCommonConditionPressureIn();
-        result = result +", Railway: "+ this.accidentRepository.mostCommonConditionRailway();
-        result = result +", Roundabout: "+ this.accidentRepository.mostCommonConditionRoundabout();
-        result = result +", Severity: "+ this.accidentRepository.mostCommonConditionSeverity();
-        result = result +", Sid: "+ this.accidentRepository.mostCommonConditionSid();
-        result = result +", StartTime: "+ this.accidentRepository.mostCommonConditionStartTime();
-        result = result +", State: "+ this.accidentRepository.mostCommonConditionState();
-        result = result +", Station: "+ this.accidentRepository.mostCommonConditionStation();
-        result = result +", Stop: "+ this.accidentRepository.mostCommonConditionStop();
-        result = result +", Street: "+ this.accidentRepository.mostCommonConditionStreet();
-        result = result +", SunriseSunset: "+ this.accidentRepository.mostCommonConditionSunriseSunset();
-        result = result +", TemperatureF: "+ this.accidentRepository.mostCommonConditionTemperatureF();
-        result = result +", Tmc: "+ this.accidentRepository.mostCommonConditionTmc();
-        result = result +", TrafficCalming: "+ this.accidentRepository.mostCommonConditionTrafficCalming();
-        result = result +", TrafficSignal: "+ this.accidentRepository.mostCommonConditionTrafficSignal();
-        result = result +", TurningLoop: "+ this.accidentRepository.mostCommonConditionTurningLoop();
-        result = result +", VisibilityMi: "+ this.accidentRepository.mostCommonConditionVisibilityMi();
-        result = result +", WeatherCondition: "+ this.accidentRepository.mostCommonConditionWeatherCondition();
-        result = result +", WindChillF: "+ this.accidentRepository.mostCommonConditionWindChillF();
-        result = result +", WindDirection: "+ this.accidentRepository.mostCommonConditionWindDirection();
-        result = result +", WindSpeedMph: "+ this.accidentRepository.mostCommonConditionWindSpeedMph();
-        result = "Zipcode: "+result +", "+ this.accidentRepository.mostCommonConditionZipcode();
+        String result = "\nAmenity: "+this.accidentRepository.mostCommonConditionAmenity();
+        result = result +",\nAstronomicalTwilight: "+ this.accidentRepository.mostCommonConditionAstronomicalTwilight();
+        result = result +", \nBump: "+ this.accidentRepository.mostCommonConditionBump();
+        result = result +", \nCity: "+ this.accidentRepository.mostCommonConditionCity();
+        result = result +", \nCivilTwilight: "+ this.accidentRepository.mostCommonConditionCivilTwilight();
+        result = result +", \nCounty: "+ this.accidentRepository.mostCommonConditionCounty();
+        result = result +", \nCrossing: "+ this.accidentRepository.mostCommonConditionCrossing();
+        result = result +", \nDistanceMi: "+ this.accidentRepository.mostCommonConditionDistanceMi();
+        result = result +", \nEndTime: "+ this.accidentRepository.mostCommonConditionEndTime();
+        result = result +", \nGiveWay: "+ this.accidentRepository.mostCommonConditionGiveWay();
+        result = result +", \nHumidity: "+ this.accidentRepository.mostCommonConditionHumidity();
+        result = result +", \nJunction: "+ this.accidentRepository.mostCommonConditionJunction();
+        result = result +", \nNoExit: "+ this.accidentRepository.mostCommonConditionNoExit();
+        result = result +", \nNoExit: "+ this.accidentRepository.mostCommonConditionNoExit();
+        result = result +", \nNuaticalTwilight: "+ this.accidentRepository.mostCommonConditionNuaticalTwilight();
+        result = result +", \nNumber: "+ this.accidentRepository.mostCommonConditionNumber();
+        result = result +", \nPrecipitation: "+ this.accidentRepository.mostCommonConditionPrecipitation();
+        result = result +", \nPressureIn: "+ this.accidentRepository.mostCommonConditionPressureIn();
+        result = result +", \nRailway: "+ this.accidentRepository.mostCommonConditionRailway();
+        result = result +", \nRoundabout: "+ this.accidentRepository.mostCommonConditionRoundabout();
+        result = result +", \nSeverity: "+ this.accidentRepository.mostCommonConditionSeverity();
+        result = result +", \nSid: "+ this.accidentRepository.mostCommonConditionSid();
+        result = result +", \nStartTime: "+ this.accidentRepository.mostCommonConditionStartTime();
+        result = result +", \nState: "+ this.accidentRepository.mostCommonConditionState();
+        result = result +", \nStation: "+ this.accidentRepository.mostCommonConditionStation();
+        result = result +", \nStop: "+ this.accidentRepository.mostCommonConditionStop();
+        result = result +", \nStreet: "+ this.accidentRepository.mostCommonConditionStreet();
+        result = result +", \nSunriseSunset: "+ this.accidentRepository.mostCommonConditionSunriseSunset();
+        result = result +", \nTemperatureF: "+ this.accidentRepository.mostCommonConditionTemperatureF();
+        result = result +", \nTmc: "+ this.accidentRepository.mostCommonConditionTmc();
+        result = result +", \nTrafficCalming: "+ this.accidentRepository.mostCommonConditionTrafficCalming();
+        result = result +", \nTrafficSignal: "+ this.accidentRepository.mostCommonConditionTrafficSignal();
+        result = result +", \nTurningLoop: "+ this.accidentRepository.mostCommonConditionTurningLoop();
+        result = result +", \nVisibilityMi: "+ this.accidentRepository.mostCommonConditionVisibilityMi();
+        result = result +", \nWeatherCondition: "+ this.accidentRepository.mostCommonConditionWeatherCondition();
+        result = result +", \nWindChillF: "+ this.accidentRepository.mostCommonConditionWindChillF();
+        result = result +", \nWindDirection: "+ this.accidentRepository.mostCommonConditionWindDirection();
+        result = result +", \nWindSpeedMph: "+ this.accidentRepository.mostCommonConditionWindSpeedMph();
+        result = result +", \nZipcode: "+ this.accidentRepository.mostCommonConditionZipcode();
         return result;
     }
 
@@ -104,8 +104,9 @@ public class AccidentServiceImpl implements AccidentService {
     }
 
     @Override
-    public List<AccidentWithDistance> averageDistanceFromEveryAccidentToTheNearestTen() {
-        return this.accidentRepositoryMongo.averageDistanceFromEveryAccidentToTheNearestTen();
+    public List<AccidentWithDistance> averageDistanceFromEveryAccidentToTheNearestTen(int page) {
+        Pageable pageWithFiveElements = PageRequest.of(page, 5);
+        return this.accidentRepositoryMongo.averageDistanceFromEveryAccidentToTheNearestTen(pageWithFiveElements);
     }
 
     @Override

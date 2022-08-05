@@ -3,9 +3,6 @@ package com.zinbig.mongodemo.model;
 
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.awt.*;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

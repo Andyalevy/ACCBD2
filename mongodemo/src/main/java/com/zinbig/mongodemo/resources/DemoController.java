@@ -46,9 +46,6 @@ public class DemoController {
         List<Accident> accidents;
         Date startDate = formatter.parse(start + "T00:00:00");
         Date endDate = formatter.parse(end + "T00:00:00");
-        System.out.println(end);
-        System.out.println(startDate);
-        System.out.println(endDate);
 
         accidents = accidentService.accidentsBetweenDates(startDate, endDate, page);
         System.out.println("Total accidents: " + accidents.size());
@@ -112,9 +109,12 @@ public class DemoController {
         return ResponseEntity.ok(points);
     }
 
+    //http://localhost:8080/api/accidents/averageDistanceFromEveryAccidentToTheNearestTen/?page=0
     @GetMapping("/api/accidents/averageDistanceFromEveryAccidentToTheNearestTen")
-    public ResponseEntity<List<AccidentWithDistance>> averageDistanceFromEveryAccidentToTheNearestTen() throws ParseException {
-        List<AccidentWithDistance> average = this.accidentService.averageDistanceFromEveryAccidentToTheNearestTen();
+    public ResponseEntity<List<AccidentWithDistance>> averageDistanceFromEveryAccidentToTheNearestTen(
+        @RequestParam(required = true) int page) throws ParseException {
+
+        List<AccidentWithDistance> average = this.accidentService.averageDistanceFromEveryAccidentToTheNearestTen(page);
         return ResponseEntity.ok(average);
     }
 }

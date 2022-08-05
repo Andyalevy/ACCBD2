@@ -19,7 +19,7 @@ public interface AccidentService {
 
     public List<LocationWithAmount> fiveMostDangerousPoints(Double[] point, int radius);
 
-    public List<AccidentWithDistance> averageDistanceFromEveryAccidentToTheNearestTen();
+    public List<AccidentWithDistance> averageDistanceFromEveryAccidentToTheNearestTen(int page);
 
     public List<String> findByStreetsWithMoreAccidents();
 }
