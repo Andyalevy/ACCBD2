@@ -9,6 +9,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.zinbig.mongodemo.model.AccidentWithDistance;
+import com.zinbig.mongodemo.model.LocationWithAmount;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -98,7 +99,7 @@ public class AccidentServiceImpl implements AccidentService {
     }
 
     @Override
-    public List<Accident> fiveMostDangerousPoints(Double[] point, int radius) {
+    public List<LocationWithAmount> fiveMostDangerousPoints(Double[] point, int radius) {
         return this.accidentRepositoryMongo.fiveMostDangerousPoints(point, radius);
     }
 

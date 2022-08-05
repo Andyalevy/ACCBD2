@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 
+import com.zinbig.mongodemo.model.LocationWithAmount;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -88,6 +89,7 @@ public class DemoController {
         return ResponseEntity.ok(accidentsNear);
     }
 
+    //http://localhost:8080/api/accidents/fiveStreetsWithMoreAccidents
     @GetMapping("/api/accidents/fiveStreetsWithMoreAccidents")
     public ResponseEntity<List<String>> fiveStreetsWithMoreAccidents() throws ParseException {
         
@@ -97,14 +99,14 @@ public class DemoController {
     }
 
     @GetMapping("/api/accidents/fiveMostDangerousPoints")
-    public ResponseEntity<List<Accident>> fiveMostDangerousPoints(
-        @RequestParam(required = false, defaultValue = "-84.032608") String longitud,
-        @RequestParam(required = false, defaultValue = "39.063148") String latitud,
-        @RequestParam(required = false, defaultValue = "10000") int radius) throws ParseException {
+    public ResponseEntity<List<LocationWithAmount>> fiveMostDangerousPoints(
+        @RequestParam(required = false, defaultValue = "-82") String longitude,
+        @RequestParam(required = false, defaultValue = "39") String latitude,
+        @RequestParam(required = false, defaultValue = "150000") int radius) throws ParseException {
         
-        Double[] point = {Double.parseDouble(longitud), Double.parseDouble(latitud)};
+        Double[] point = {Double.parseDouble(longitude), Double.parseDouble(latitude)};
         
-        List<Accident> points = this.accidentService.fiveMostDangerousPoints( point, radius); 
+        List<LocationWithAmount> points = this.accidentService.fiveMostDangerousPoints( point, radius);
         System.out.println("Puntos con más accidentes: "+ points);
         return ResponseEntity.ok(points);
     }

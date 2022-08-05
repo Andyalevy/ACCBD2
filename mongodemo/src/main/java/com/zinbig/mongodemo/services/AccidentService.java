@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.zinbig.mongodemo.model.Accident;
 import com.zinbig.mongodemo.model.AccidentWithDistance;
+import com.zinbig.mongodemo.model.LocationWithAmount;
 
 public interface AccidentService {
 
@@ -16,7 +17,7 @@ public interface AccidentService {
 
     public Float averageDistanceOfAccidentsFromBeginningToEnd();
 
-    public List<Accident> fiveMostDangerousPoints( Double[] point, int radius);
+    public List<LocationWithAmount> fiveMostDangerousPoints(Double[] point, int radius);
 
     public List<AccidentWithDistance> averageDistanceFromEveryAccidentToTheNearestTen();
 
