@@ -39,8 +39,9 @@ public class AccidentServiceImpl implements AccidentService {
     private AccidentRepositoryMongo accidentRepositoryMongo;
 
     @Override
-    public List<Accident> accidentsBetweenDates(Date beginDate, Date endDate) {
-        return this.accidentRepository.findByStartTimeBetween(beginDate, endDate);
+    public List<Accident> accidentsBetweenDates(Date beginDate, Date endDate, int page) {
+        Pageable pageWithFiveElements = PageRequest.of(page, 5);
+        return this.accidentRepository.findByStartTimeBetween(beginDate, endDate, pageWithFiveElements);
     }
 
     @Override

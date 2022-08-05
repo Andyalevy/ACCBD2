@@ -8,7 +8,7 @@ import com.zinbig.mongodemo.model.AccidentWithDistance;
 
 public interface AccidentService {
 
-    public List<Accident> accidentsBetweenDates( Date beginDate, Date endDate);
+    public List<Accident> accidentsBetweenDates( Date beginDate, Date endDate, int page);
     
     public String mostCommonConditions();
 

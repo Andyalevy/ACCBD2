@@ -33,10 +33,12 @@ public class DemoController {
 	@Inject
 	private AccidentService accidentService;
 
-	@GetMapping("/api/accidents/betweenDates")
+	//http://localhost:8080/api/accidents/betweenDates?start=2016-01-01&end=2016-02-01&page=0
+    @GetMapping("/api/accidents/betweenDates")
     public ResponseEntity<List<Accident>> listAccidents(
-        @RequestParam(required = false, defaultValue = "2016-02-01") String start,
-        @RequestParam(required = false, defaultValue = "2019-03-01") String end) throws ParseException {
+        @RequestParam(required = true) String start,
+        @RequestParam(required = true) String end,
+        @RequestParam(required = true) int page) throws ParseException {
         
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -47,7 +49,7 @@ public class DemoController {
         System.out.println(startDate);
         System.out.println(endDate);
 
-        accidents = accidentService.accidentsBetweenDates(startDate, endDate);
+        accidents = accidentService.accidentsBetweenDates(startDate, endDate, page);
         System.out.println("Total accidents: " + accidents.size());
 
         return ResponseEntity.ok(accidents);

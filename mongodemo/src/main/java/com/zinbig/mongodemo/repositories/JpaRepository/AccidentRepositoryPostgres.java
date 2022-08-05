@@ -9,11 +9,14 @@ import org.springframework.stereotype.Repository;
 
 import com.zinbig.mongodemo.model.Accident;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 @Repository
 public interface AccidentRepositoryPostgres extends CrudRepository<Accident, String>{
 
     @Query(value="select * from accidents where start_time between ?1 and ?2", nativeQuery = true)
-    List<Accident> findByStartTimeBetween( Date beginDate, Date endDate);
+    List<Accident> findByStartTimeBetween( Date beginDate, Date endDate, Pageable pageable);
 
     //@Query(value="select ?1 from accidents where ?1 is not null group by ?1 order by count(?1) desc", nativeQuery = true)
     //String mostCommoncondition(String campo);
