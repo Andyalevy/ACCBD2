@@ -98,11 +98,12 @@ public class DemoController {
         return ResponseEntity.ok(streets);
     }
 
+    //http://localhost:8080/api/accidents/fiveMostDangerousPoints?longitude=-82&latitude=39&radius=150000
     @GetMapping("/api/accidents/fiveMostDangerousPoints")
     public ResponseEntity<List<LocationWithAmount>> fiveMostDangerousPoints(
-        @RequestParam(required = false, defaultValue = "-82") String longitude,
-        @RequestParam(required = false, defaultValue = "39") String latitude,
-        @RequestParam(required = false, defaultValue = "150000") int radius) throws ParseException {
+        @RequestParam(required = true) String longitude,
+        @RequestParam(required = true) String latitude,
+        @RequestParam(required = true) int radius) throws ParseException {
         
         Double[] point = {Double.parseDouble(longitude), Double.parseDouble(latitude)};
         
