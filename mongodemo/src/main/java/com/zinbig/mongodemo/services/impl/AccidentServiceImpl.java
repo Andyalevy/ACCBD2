@@ -14,12 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zinbig.mongodemo.model.Accident;
-import com.zinbig.mongodemo.model.AccidentWithDistance;
 import com.zinbig.mongodemo.repositories.AccidentRepositoryMongo;
 import com.zinbig.mongodemo.repositories.JpaRepository.AccidentRepositoryPostgres;
 import com.zinbig.mongodemo.services.AccidentService;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
@@ -110,8 +108,8 @@ public class AccidentServiceImpl implements AccidentService {
     }
 
     @Override
-    public List<String> findByCitiesWithMoreAccidents() {
-        return this.accidentRepository.findByCitiesWithMoreAccidents();
+    public List<String> findByStreetsWithMoreAccidents() {
+        return this.accidentRepository.findByStreetsWithMoreAccidents();
     }
 
 }

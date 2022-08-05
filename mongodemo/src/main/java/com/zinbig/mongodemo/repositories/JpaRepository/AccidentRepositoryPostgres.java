@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.zinbig.mongodemo.model.Accident;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 @Repository
@@ -30,8 +29,8 @@ public interface AccidentRepositoryPostgres extends CrudRepository<Accident, Str
 
     //List<Integer> averageDistanceFromEveryAccidentToTheNearestTen();  
     
-    @Query(value="select city, count(city) as total from accidents group by city order by total desc limit 5", nativeQuery = true)
-    List<String> findByCitiesWithMoreAccidents();
+    @Query(value="select street, count(street) as total from accidents group by street order by total desc limit 5", nativeQuery = true)
+    List<String> findByStreetsWithMoreAccidents();
 
     @Query(value="select tmc from accidents where tmc is not null group by tmc order by count(tmc) desc limit 1", nativeQuery = true)
     String mostCommonConditionTmc();

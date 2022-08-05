@@ -20,5 +20,5 @@ public interface AccidentService {
 
     public List<AccidentWithDistance> averageDistanceFromEveryAccidentToTheNearestTen();
 
-    public List<String> findByCitiesWithMoreAccidents();
+    public List<String> findByStreetsWithMoreAccidents();
 }

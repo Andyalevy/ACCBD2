@@ -88,12 +88,12 @@ public class DemoController {
         return ResponseEntity.ok(accidentsNear);
     }
 
-    @GetMapping("/api/accidents/citiesWithMoreAccidents")
-    public ResponseEntity<List<String>> citiesWithMoreAccidents() throws ParseException {
+    @GetMapping("/api/accidents/fiveStreetsWithMoreAccidents")
+    public ResponseEntity<List<String>> fiveStreetsWithMoreAccidents() throws ParseException {
         
-        List<String> cities = this.accidentService.findByCitiesWithMoreAccidents(); 
-        System.out.println("Ciudades con más accidentes: "+ cities);
-        return ResponseEntity.ok(cities);
+        List<String> streets = this.accidentService.findByStreetsWithMoreAccidents();
+        System.out.println("Calles con más accidentes: " + streets);
+        return ResponseEntity.ok(streets);
     }
 
     @GetMapping("/api/accidents/fiveMostDangerousPoints")
