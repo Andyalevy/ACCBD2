@@ -71,7 +71,7 @@ public class DemoController {
         return ResponseEntity.ok(mostCommonCondition);
     }
 
-    //"http://localhost:8080/api/accidents/accidentsNear?longitud=-84&latitud=39&radius=10000&page=0"
+    //"http://localhost:8080/api/accidents/accidentsNear?longitude=-84&latitude=39&radius=10000&page=0"
     @GetMapping("/api/accidents/accidentsNear")
     public ResponseEntity<List<Accident>> accidentsNear(
             @RequestParam(required = true) String longitude,
