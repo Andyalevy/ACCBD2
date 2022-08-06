@@ -7,7 +7,7 @@ CREATE TABLE accidents (
 	id VARCHAR(10) NOT NULL,
 	source VARCHAR ( 256 ), 
 	tmc FLOAT,
-	severety SMALLINT , 
+	severity SMALLINT , 
 	start_time TIMESTAMP,
     end_time TIMESTAMP,
     start_lat DECIMAL (8,6),
@@ -54,5 +54,5 @@ CREATE TABLE accidents (
 	nautical_twilight VARCHAR(10),
 	astronomical_twilight VARCHAR(10)
 );
-COPY accidents(id,source,tmc,severety,start_time,end_time,start_lat,start_lng,end_lat,end_lng,distance_mi,description,number,street,side,city,county,state,zipcode,country,timezone,airport_code,weather_timestamp,temperature_f,wind_chill_f,humidity,pressure_in,visibility_mi,wind_direction,wind_speed_mph,precipitation_in,weather_condition,amenity,bump,crossing,give_way,junction,no_exit,railway,roundabout,station,stop,traffic_calming,traffic_signal,turning_loop,sunrise_sunset,civil_twilight,nautical_twilight,astronomical_twilight) FROM '/tmp/US_Accidents_Dec19.csv' DELIMITER ',' CSV HEADER;
+COPY accidents(id,source,tmc,severity,start_time,end_time,start_lat,start_lng,end_lat,end_lng,distance_mi,description,number,street,side,city,county,state,zipcode,country,timezone,airport_code,weather_timestamp,temperature_f,wind_chill_f,humidity,pressure_in,visibility_mi,wind_direction,wind_speed_mph,precipitation_in,weather_condition,amenity,bump,crossing,give_way,junction,no_exit,railway,roundabout,station,stop,traffic_calming,traffic_signal,turning_loop,sunrise_sunset,civil_twilight,nautical_twilight,astronomical_twilight) FROM '/tmp/US_Accidents_Dec19.csv' DELIMITER ',' CSV HEADER;
 EOSQL
