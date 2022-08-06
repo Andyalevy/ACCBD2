@@ -8,6 +8,10 @@ Santiago Cristobal, legajo: 14413/4
 
 Alejo Pugliese, legajo: 14414/5
 
+## IMPORTANTE
+
+Se necesita copiar el dataset US_Accidents_Dec19.csv en la carpeta docker antes de levantar los containers
+
 ## Levantar los containers
 Primero debemos pararnos en la carpeta docker
 ```
@@ -23,6 +27,13 @@ utilizando docker compose
 ```
 docker-compose up
 ```
+### Disclaimer:
+
+#### _Levantar los containers, importar las bases de datos y crear el índice 2dSphere puede tardar varios minutos, por favor se paciente._
+
+#### _Si las consultas de localización fallan se puede deber a que el índice aún no se terminó de crear. Fin del disclaimer._
+
+
 En el archivo de docker-compose podemos ver la creación de los distintos containers.
 
 Las bases de datos cuentan con un script inicial de importación, que se ejecuta la primera vez que se crean.
