@@ -4,10 +4,11 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 public class AccidentWithDistance {
     private String id;
-    @Field(value="distance")
+    @Field(value = "distance")
     private Double distance;
 
-public AccidentWithDistance(){}
+    public AccidentWithDistance() {
+    }
 
     public AccidentWithDistance(String id, Double distance) {
         this.id = id;

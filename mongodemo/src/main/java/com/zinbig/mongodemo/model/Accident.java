@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="accidents")
+@Table(name = "accidents")
 public class Accident {
 
     @Id
@@ -113,11 +113,19 @@ public class Accident {
     @Field("Astronomical_Twilight")
     private String astronomicalTwilight;
 
-
     public Accident() {
     }
 
-    public Accident(String id, String source, Float tmc, Integer severity, String startTime, String endTime, Float startLat, Float startLng, Float endLat, Float endLng, Float distanceMi, String description, Float number, String street, char side, String city, String county, String state, String zipcode, String country, String timezone, String airportCode, String weatherTimestamp, Float temperatureF, String windChillF, String humidity, String pressureIn, Float visibilityMi, String windDirection, Float windSpeedMph, Float precipitationIn, String weatherCondition, Boolean amenity, Boolean bump, Boolean crossing, Boolean giveWay, Boolean junction, Boolean noExit, Boolean railway, Boolean roundabout, Boolean station, Boolean stop, Boolean trafficCalming, Boolean trafficSignal, Boolean turningLoop, String sunriseSunset, String civilTwilight, String nauticalTwilight, String astronomicalTwilight, String location) {
+    public Accident(String id, String source, Float tmc, Integer severity, String startTime, String endTime,
+            Float startLat, Float startLng, Float endLat, Float endLng, Float distanceMi, String description,
+            Float number, String street, char side, String city, String county, String state, String zipcode,
+            String country, String timezone, String airportCode, String weatherTimestamp, Float temperatureF,
+            String windChillF, String humidity, String pressureIn, Float visibilityMi, String windDirection,
+            Float windSpeedMph, Float precipitationIn, String weatherCondition, Boolean amenity, Boolean bump,
+            Boolean crossing, Boolean giveWay, Boolean junction, Boolean noExit, Boolean railway, Boolean roundabout,
+            Boolean station, Boolean stop, Boolean trafficCalming, Boolean trafficSignal, Boolean turningLoop,
+            String sunriseSunset, String civilTwilight, String nauticalTwilight, String astronomicalTwilight,
+            String location) {
         this.id = id;
         this.source = source;
         this.tmc = tmc;
@@ -168,7 +176,6 @@ public class Accident {
         this.nauticalTwilight = nauticalTwilight;
         this.astronomicalTwilight = astronomicalTwilight;
     }
-
 
     public String getId() {
         return this.id;

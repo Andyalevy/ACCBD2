@@ -28,7 +28,7 @@ services:
       - ./init-import-mongo02.js:/docker-entrypoint-initdb.d/init-import-mongo02.js
     ports:
       - "27017:27017"
- 
+
   mongodemo:
     image: mongodemo
     container_name: mongodemo

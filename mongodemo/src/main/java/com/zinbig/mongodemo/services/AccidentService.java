@@ -11,11 +11,11 @@ public interface AccidentService {
 
     /**
      * @param beginDate fecha de inicio
-     * @param endDate fecha de fin
-     * @param page número página
+     * @param endDate   fecha de fin
+     * @param page      número página
      * @return los accidentes ocurridos entre 2 fechas
      */
-    public List<Accident> accidentsBetweenDates( Date beginDate, Date endDate, int page);
+    public List<Accident> accidentsBetweenDates(Date beginDate, Date endDate, int page);
 
     /**
      * @return las condiciones más comunes de los accidentes
@@ -23,12 +23,12 @@ public interface AccidentService {
     public Accident mostCommonConditions();
 
     /**
-     * @param point punto
+     * @param point  punto
      * @param radius radio
-     * @param page número de página
+     * @param page   número de página
      * @return los accidentes ocurridos dentro de un radio
      */
-    public List<Accident> accidentsNearAPointInARadius( Double[] point, int radius, int page);
+    public List<Accident> accidentsNearAPointInARadius(Double[] point, int radius, int page);
 
     /**
      * @return la distancia promedio desde el inicio al fin del accidente
@@ -36,7 +36,7 @@ public interface AccidentService {
     public Float averageDistanceOfAccidentsFromBeginningToEnd();
 
     /**
-     * @param point punto
+     * @param point  punto
      * @param radius radio
      * @return los 5 puntos más peligrosos
      */

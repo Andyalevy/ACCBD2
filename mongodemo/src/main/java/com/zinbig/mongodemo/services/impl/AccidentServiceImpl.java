@@ -25,15 +25,15 @@ import org.springframework.data.domain.Pageable;
 @Transactional
 public class AccidentServiceImpl implements AccidentService {
 
-	@Inject
-	private AccidentRepositoryPostgres accidentRepository;
+    @Inject
+    private AccidentRepositoryPostgres accidentRepository;
     @Inject
     private AccidentRepositoryMongo accidentRepositoryMongo;
 
     /**
      * @param beginDate fecha de inicio
-     * @param endDate fecha de fin
-     * @param page número de página
+     * @param endDate   fecha de fin
+     * @param page      número de página
      * @return los accidentes ocurridos entre 2 fechas
      */
     @Override
@@ -49,7 +49,8 @@ public class AccidentServiceImpl implements AccidentService {
     public Accident mostCommonConditions() {
         Accident mostCommonConditionsAccident = new Accident();
         mostCommonConditionsAccident.setAmenity(this.accidentRepository.mostCommonConditionAmenity());
-        mostCommonConditionsAccident.setAstronomicalTwilight(this.accidentRepository.mostCommonConditionAstronomicalTwilight());
+        mostCommonConditionsAccident
+                .setAstronomicalTwilight(this.accidentRepository.mostCommonConditionAstronomicalTwilight());
         mostCommonConditionsAccident.setBump(this.accidentRepository.mostCommonConditionBump());
         mostCommonConditionsAccident.setCity(this.accidentRepository.mostCommonConditionCity());
         mostCommonConditionsAccident.setCivilTwilight(this.accidentRepository.mostCommonConditionCivilTwilight());
@@ -90,9 +91,9 @@ public class AccidentServiceImpl implements AccidentService {
     }
 
     /**
-     * @param point punto
+     * @param point  punto
      * @param radius radio
-     * @param page número de página
+     * @param page   número de página
      * @return los accidentes ocurridos dentro de un radio
      */
     @Override
@@ -110,7 +111,7 @@ public class AccidentServiceImpl implements AccidentService {
     }
 
     /**
-     * @param point punto
+     * @param point  punto
      * @param radius radio
      * @return los 5 puntos más peligrosos
      */
@@ -121,7 +122,8 @@ public class AccidentServiceImpl implements AccidentService {
 
     /**
      * @param page número de página
-     * @return la distancia promedio que existe entre cada accidente y los 10 más cercanos
+     * @return la distancia promedio que existe entre cada accidente y los 10 más
+     *         cercanos
      */
     @Override
     public List<AccidentWithDistance> averageDistanceFromEveryAccidentToTheNearestTen(int page) {
