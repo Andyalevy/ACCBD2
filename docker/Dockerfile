@@ -1,4 +1,3 @@
-FROM openjdk:11
 FROM maven
 
 WORKDIR /mongodemo
